@@ -29,6 +29,8 @@ const modalRating = document.getElementById("modal-rating");
 const preparationTimes = document.getElementById("preparation-times");
 const closeModalBtn = document.querySelector(".close-btn");
 
+const favoriteBtn = document.getElementById("favorite-btn");
+
 if (inputBox) {
   inputBox.onkeyup = function () {
     let result = [];
@@ -171,9 +173,38 @@ async function createRecipeCard(recipe) {
   card.addEventListener("click", () => openModal(recipe.id));
 }
 
-// favorites
+function addToFavorites() {
+  const recipe = {
+    id: modal.dataset.recipeId,
+    title: modalTitle.textContent,
+    image: modal.querySelector(".recipe-image").src,
+  };
 
+  let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
+  if (!favorites.find(fav => fav.id === recipe.id)) {
+    favorites.push(recipe);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    alert("Recipe added to favorites!");
+  } else {
+    alert("Recipe already in favorites!");
+  }
+}
+
+function loadFavorites() {
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  if (favorites.length === 0) {
+    gridContainer.innerHTML = "<p>No favorite recipes yet!</p>";
+    return;
+  }
+
+  favorites.forEach((recipe) => createRecipeCard(recipe));
+}
+
+if (window.location.pathname.includes("favorites.html")) {
+  document.addEventListener("DOMContentLoaded", loadFavorites);
+}
 
 async function openModal(recipeId) {
   try {
@@ -186,7 +217,17 @@ async function openModal(recipeId) {
 
     const data = await response.json();
 
+    modal.dataset.recipeId = data.id;
+
     modalTitle.textContent = data.title;
+    
+    const recipeImage = document.createElement("img");
+    recipeImage.src = data.image;
+    recipeImage.alt = data.title;
+    recipeImage.classList.add("recipe-image");
+    
+    modal.querySelector(".recipe-image")?.remove();
+    modal.querySelector(".modal-content").prepend(recipeImage);
 
     modalIngredients.innerHTML = "<h3>Ingredients:</h3>";
     data.extendedIngredients.forEach((ingredient) => {
@@ -203,11 +244,7 @@ async function openModal(recipeId) {
     });
 
     preparationTimes.innerHTML = `<h3>Preparation Time:</h3><p>${data.readyInMinutes} minutes</p>`;
-
-    modalRating.innerHTML = `<h3>Score:</h3><p>${parseInt(
-      data.spoonacularScore,
-      10
-    )}</p>`;
+    modalRating.innerHTML = `<h3>Score:</h3><p>${parseInt(data.spoonacularScore, 10)}</p>`;
 
     modal.style.display = "flex";
   } catch (error) {
