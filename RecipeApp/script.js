@@ -2,16 +2,26 @@ const apiKey = "7f11b57982914e408720454dc7cad8c6";
 const apiEndpoint = "https://api.spoonacular.com/recipes/";
 
 let availableKeywords = [
-  "pasta",
-  "pizza",
-  "salad",
-  "soup",
-  "vegan",
-  "breakfast",
-  "dinner",
-  "dessert",
-  "pie",
-  "superfoods",
+  "Pizza",
+  "Burger",
+  "Sushi",
+  "Pasta",
+  "Shawarma",
+  "Risotto",
+  "Tacos",
+  "Steak",
+  "Dumplings",
+  "Lasagna",
+  "Caesar Salad",
+  "Ramen",
+  "Kebab",
+  "Fajitas",
+  "Burritos",
+  "Fish and Chips",
+  "Paella",
+  "Tom Yum",
+  "Chicken Kiev",
+  "Falafel",
 ];
 let latestResult = [];
 
@@ -97,13 +107,13 @@ if (inputBox) {
   async function createAutocompleteText(autocompleteData) {
     const text = document.createElement("p");
     text.textContent = `Did you mean ${autocompleteData.title}?`;
-  
+
     autocomplete.appendChild(text);
   }
-  
+
   async function autocompleteSearch(query) {
     autocomplete.innerHTML = "";
-  
+
     try {
       const response = await fetch(
         `${apiEndpoint}autocomplete?number=1&query=${query}&apiKey=${apiKey}`
@@ -111,9 +121,9 @@ if (inputBox) {
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-  
+
       const data = await response.json();
-  
+
       if (data.length > 0) {
         createAutocompleteText(data[0]);
       } else {
@@ -182,7 +192,7 @@ function addToFavorites() {
 
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-  if (!favorites.find(fav => fav.id === recipe.id)) {
+  if (!favorites.find((fav) => fav.id === recipe.id)) {
     favorites.push(recipe);
     localStorage.setItem("favorites", JSON.stringify(favorites));
     alert("Recipe added to favorites!");
@@ -220,12 +230,12 @@ async function openModal(recipeId) {
     modal.dataset.recipeId = data.id;
 
     modalTitle.textContent = data.title;
-    
+
     const recipeImage = document.createElement("img");
     recipeImage.src = data.image;
     recipeImage.alt = data.title;
     recipeImage.classList.add("recipe-image");
-    
+
     modal.querySelector(".recipe-image")?.remove();
     modal.querySelector(".modal-content").prepend(recipeImage);
 
@@ -244,7 +254,10 @@ async function openModal(recipeId) {
     });
 
     preparationTimes.innerHTML = `<h3>Preparation Time:</h3><p>${data.readyInMinutes} minutes</p>`;
-    modalRating.innerHTML = `<h3>Score:</h3><p>${parseInt(data.spoonacularScore, 10)}</p>`;
+    modalRating.innerHTML = `<h3>Score:</h3><p>${parseInt(
+      data.spoonacularScore,
+      10
+    )}</p>`;
 
     modal.style.display = "flex";
   } catch (error) {

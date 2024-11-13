@@ -100,17 +100,6 @@ button .fa-solid {
   overflow-y: scroll;
 }
 
-.autocomplete {
-  position: absolute;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 550px;
-  color: #fff;
-  margin: 80px auto 0;
-}
-
 .grid-container {
   margin-top: 200px;
   margin-bottom: 40px;
@@ -121,7 +110,7 @@ button .fa-solid {
   justify-content: center;
 }
 
-.favorite-grid-container {
+.wishlist-grid-container {
   margin-top: 80px;
   margin-bottom: 40px;
   color: white;
@@ -141,7 +130,7 @@ button .fa-solid {
   transition: transform 0.3s ease;
 }
 
-.recipe-image {
+.movie-image {
   width: 100%;
   max-width: 321px;
   height: auto;
@@ -216,7 +205,7 @@ h2 {
   margin: 0.5em 0;
 }
 
-.favorite-btn {
+.wishlist-btn {
   display: inline-block;
   padding: 10px 20px;
   background-color: #ff6b6b;
@@ -232,17 +221,11 @@ h2 {
   max-width: 200px;
 }
 
-.favorite-btn:hover {
+.wishlist-btn:hover {
   background-color: #ff4c4c;
 }
 
 @media (max-width: 768px) {
-  .autocomplete {
-    width: 90%;
-    max-width: 550px;
-    margin-top: 0px;
-  }
-
   .search-box {
     width: 90%;
     margin-top: 30px;
@@ -252,7 +235,7 @@ h2 {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 
-  .favorite-grid-container {
+  .wishlist-grid-container {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 
@@ -260,7 +243,7 @@ h2 {
     padding: 1.5em;
   }
 
-  .recipe-image {
+  .movie-image {
     max-width: 100%;
     max-height: 200px;
   }
@@ -278,20 +261,20 @@ h2 {
     font-size: 0.95em;
   }
 
-  .favorite-btn {
+  .wishlist-btn {
     font-size: 0.95em;
     padding: 8px 16px;
     max-width: 180px;
   }
+
+  .close-btn {
+    top: 8px;
+    right: 8px;
+    font-size: 22px;
+  }
 }
 
 @media (max-width: 650px) {
-  .autocomplete {
-    width: 90%;
-    max-width: 500px;
-    margin-top: 80px;
-  }
-
   .search-box {
     width: 90%;
     margin-top: 30px;
@@ -301,7 +284,7 @@ h2 {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
-  .favorite-grid-container {
+  .wishlist-grid-container {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
@@ -309,7 +292,7 @@ h2 {
     padding: 1.5em;
   }
 
-  .recipe-image {
+  .movie-image {
     max-width: 100%;
     max-height: 200px;
   }
@@ -327,7 +310,12 @@ h2 {
     font-size: 0.95em;
   }
 
-  .favorite-btn {
+  .close-btn {
+    top: 8px;
+    right: 8px;
+    font-size: 20px;
+  }
+  .wishlist-btn {
     font-size: 0.95em;
     padding: 8px 16px;
     max-width: 180px;
@@ -335,12 +323,6 @@ h2 {
 }
 
 @media (max-width: 480px) {
-  .autocomplete {
-    width: 90%;
-    max-width: 400px;
-    margin-top: 80px;
-  }
-
   .search-box {
     width: 90%;
     margin-top: 20px;
@@ -354,7 +336,7 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .favorite-grid-container {
+  .wishlist-grid-container {
     grid-template-columns: 1fr;
   }
 
@@ -362,7 +344,7 @@ h2 {
     padding: 1em;
   }
 
-  .recipe-image {
+  .movie-image {
     max-width: 100%;
     max-height: 180px;
   }
@@ -386,7 +368,7 @@ h2 {
     font-size: 20px;
   }
 
-  .favorite-btn {
+  .wishlist-btn {
     font-size: 0.9em;
     padding: 8px 14px;
     max-width: 100%;

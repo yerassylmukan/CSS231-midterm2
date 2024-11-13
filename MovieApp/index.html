@@ -12,12 +12,12 @@
       src="https://kit.fontawesome.com/dbfd4990cf.js"
       crossorigin="anonymous"
     ></script>
-    <title>RecipeApp</title>
+    <title>MovieApp</title>
   </head>
   <body>
     <nav class="navbar">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="favorites.html" class="nav-link">Favorites</a>
+      <a href="wishlist.html" class="nav-link">Wishlist</a>
     </nav>
 
     <div class="search-box">
@@ -35,24 +35,23 @@
       <div class="result-box" id="result-box"></div>
     </div>
 
-    <div class="autocomplete" id="autocomplete"></div>
-
     <div class="grid-container" id="grid-container"></div>
 
-    <div class="modal" id="recipe-modal">
+    <div class="modal" id="movie-modal">
       <div class="modal-content">
         <span class="close-btn">&times;</span>
         <h2 id="modal-title"></h2>
-        <div id="modal-ingredients"></div>
-        <div id="modal-nutrition"></div>
-        <div id="modal-rating"></div>
-        <div id="preparation-times"></div>
+        <p id="modal-synopsis"></p>
+        <p id="modal-rating"></p>
+        <p id="modal-runtime"></p>
+        <div id="modal-cast"></div>
+        <div id="modal-crew"></div>
         <button
-          class="favorite-btn"
-          id="favorite-btn"
-          onclick="addToFavorites()"
+          class="wishlist-btn"
+          id="wishlist-btn"
+          onclick="addToWishlist()"
         >
-          Add to Favorites
+          Add to Wishlist
         </button>
       </div>
     </div>
