@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/dbfd4990cf.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>WeatherApp</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="weather.html" class="nav-link">Weather</a>
+      <a href="forecast.html" class="nav-link">Forecast</a>
+    </nav>
+
+    <div class="search-box">
+      <div class="row">
+        <input
+          type="text"
+          id="input-box"
+          placeholder="Search anything"
+          autocomplete="off"
+        />
+        <button id="search-button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+      <div class="result-box" id="result-box"></div>
+    </div>
+
+    <div class="grid-container" id="grid-container"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
